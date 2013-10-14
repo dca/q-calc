@@ -5,14 +5,12 @@ angular.module('qCalcApp').
 
 controller('ListCtrl', function(
     $scope,
-    Data
+    Card
 ){
     $scope.level = 120.0;
     $scope.isHideStart = true;
 
-    var Cards = Data.retrieve('findAllCards');
-
-    Cards.$promise.then(function(data) {
+    Card.retrieve('findAllCards').$promise.then(function(data) {
         $scope.pets = data;
         reCalcAll($scope.pets, $scope.level);
     });
