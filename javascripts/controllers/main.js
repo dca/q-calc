@@ -13,14 +13,17 @@ controller('ListCtrl', function(
     // $scope.pets = $resource('/data/data.json').query();
 
     $http.get('/data/data.json').success(function(data) {
-        angular.forEach(data, function(value, key){
-            reCalc(value, $scope.level);
-        });
 
         $scope.pets = data;
+        reCalcAll($scope.pets, $scope.level);
     });
 
-    function reCalc (pet, level) {
+
+    $scope.changeLevel = function () {
+        reCalcAll($scope.pets, $scope.level);
+    }
+
+    function reCalcOne (pet, level) {
         pet.dest = {};
         pet.dest.vit = ( pet.vit + pet.inc.vit * (level-1) );
         pet.dest.str = ( pet.str + pet.inc.str * (level-1) );
@@ -34,12 +37,12 @@ controller('ListCtrl', function(
         return pet;
     }
 
-    $scope.changeLevel = function () {
-        console.log('message');
-        angular.forEach( $scope.pets, function(value, key){
-            reCalc(value, $scope.level);
+    function reCalcAll (pets, level) {
+        angular.forEach( pets, function(value, key){
+            reCalcOne(value, level);
         });
     }
+
 
 
 });
