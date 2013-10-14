@@ -8,7 +8,8 @@ var rd = readline.createInterface({
     terminal: false
 });
 
-var cards=[];
+var cards =[];
+var index = 1;
 
 rd.on('line', function(line) {
             console.log(line);
@@ -17,8 +18,10 @@ rd.on('line', function(line) {
         var data = line.split(',');
         // console.log(data);
         var card = {
+            "index" : index++,
             "lev"   : data[2][0],
-            "name"  : data[2],
+            "name-s": data[1].substr(2),
+            "name"  : data[2].substr(2),
             "vit"   : parseFloat(data[3]),
             "str"   : parseFloat(data[4]),
             "mag"   : parseFloat(data[5]),
