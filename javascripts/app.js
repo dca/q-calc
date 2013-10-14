@@ -17,6 +17,11 @@ config(function(
         controller: 'ListCtrl'
     }).
 
+    when('/card/:id', {
+        templateUrl: 'views/card.html',
+        controller: 'CardCtrl'
+    }).
+
     otherwise({
         redirectTo: '/'
     });
