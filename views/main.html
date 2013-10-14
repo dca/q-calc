@@ -21,11 +21,12 @@
                 <th ng-click="predicate = 'inc.mag'; reverse=!reverse">內力成長</th>
                 <th ng-click="predicate = 'inc.agi'; reverse=!reverse">身法成長</th>
                 <th ng-click="predicate = 'inc.def'; reverse=!reverse">防禦成長</th>
-                <th>{{ level }} 血量</th>
-                <th>{{ level }} 武力</th>
-                <th>{{ level }} 內力</th>
-                <th>{{ level }} 身法</th>
-                <th>{{ level }} 防禦</th>
+                <th ng-click="predicate = 'dest.vit'; reverse=!reverse">{{ level }} 血量</th>
+                <th ng-click="predicate = 'dest.str'; reverse=!reverse">{{ level }} 武力</th>
+                <th ng-click="predicate = 'dest.mag'; reverse=!reverse">{{ level }} 內力</th>
+                <th ng-click="predicate = 'dest.agi'; reverse=!reverse">{{ level }} 身法</th>
+                <th ng-click="predicate = 'dest.def'; reverse=!reverse">{{ level }} 防禦</th>
+
                 <th ng-click="predicate = 'atk'; reverse=!reverse">輸出</th>
                 <th ng-click="predicate = 'surv'; reverse=!reverse">生存</th>
                 <th ng-click="predicate = 'total'; reverse=!reverse">綜合</th>
@@ -33,18 +34,18 @@
         </thead>
         <tbody>
             <tr ng-repeat="pet in pets | orderBy:predicate:reverse">
-                <td>{{ pet.name }}</td>
+                <td>{{ pet.lev }} - {{ pet.name }}</td>
                 <td class="vit" ng-hide="isHideStart">{{ pet.vit }}</td>
                 <td class="str" ng-hide="isHideStart">{{ pet.str }}</td>
                 <td class="mag" ng-hide="isHideStart">{{ pet.mag }}</td>
                 <td class="agi" ng-hide="isHideStart">{{ pet.agi }}</td>
                 <td class="def" ng-hide="isHideStart">{{ pet.def }}</td>
 
-                <td>{{ pet.inc.vit | number:1 }}</td>
-                <td>{{ pet.inc.str | number:1 }}</td>
-                <td>{{ pet.inc.mag | number:1 }}</td>
-                <td>{{ pet.inc.agi | number:1 }}</td>
-                <td>{{ pet.inc.def | number:1 }}</td>
+                <td>{{ pet.inc.vit | number:2 }}</td>
+                <td>{{ pet.inc.str | number:2 }}</td>
+                <td>{{ pet.inc.mag | number:2 }}</td>
+                <td>{{ pet.inc.agi | number:2 }}</td>
+                <td>{{ pet.inc.def | number:2 }}</td>
 
                 <td>{{ pet.dest.vit | number:1 }}</td>
                 <td>{{ pet.dest.str | number:1 }}</td>
