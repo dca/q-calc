@@ -5,18 +5,17 @@ angular.module('qCalcApp').
 
 controller('ListCtrl', function(
     $scope,
-    $resource,
-    $http
+    Data
 ){
     $scope.level = 120.0;
     $scope.isHideStart = true;
-    // $scope.pets = $resource('/data/data.json').query();
 
-    $http.get('./data/data.json').success(function(data) {
+    var Cards = Data.retrieve('findAllCards');
+
+    Cards.$promise.then(function(data) {
         $scope.pets = data;
         reCalcAll($scope.pets, $scope.level);
     });
-
 
     $scope.changeLevel = function () {
         reCalcAll($scope.pets, $scope.level);
@@ -42,6 +41,9 @@ controller('ListCtrl', function(
         });
     }
 
-
+    // var c = Data.retrieve('findCard', 30);
+    // c.$promise.then(function(data) {
+    //     console.log(data);
+    // });
 
 });
