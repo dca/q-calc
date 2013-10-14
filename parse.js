@@ -33,7 +33,9 @@ rd.on('line', function(line) {
                 "mag": parseFloat(data[10]),
                 "agi": parseFloat(data[11]),
                 "def": parseFloat(data[12])
-            }
+            },
+            "destiny": [],
+            "skill": []
         }
         cards.push(card);
         fs.writeFile("./data/card/"+index+".json", JSON.stringify(card), function(err) {
