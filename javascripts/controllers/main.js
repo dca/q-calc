@@ -33,5 +33,12 @@ controller('ListCtrl', function(
         return pet;
     }
 
+    $scope.changeLevel = function () {
+        console.log('message');
+        angular.forEach( $scope.pets, function(value, key){
+            reCalc(value, $scope.level);
+        });
+    }
+
 
 });
