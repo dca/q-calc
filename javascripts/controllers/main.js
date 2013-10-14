@@ -12,8 +12,7 @@ controller('ListCtrl', function(
     $scope.isHideStart = true;
     // $scope.pets = $resource('/data/data.json').query();
 
-    $http.get('/data/data.json').success(function(data) {
-
+    $http.get('./data/data.json').success(function(data) {
         $scope.pets = data;
         reCalcAll($scope.pets, $scope.level);
     });
