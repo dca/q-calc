@@ -9,16 +9,16 @@ var rd = readline.createInterface({
 });
 
 var cards =[];
-var index = 1;
+var index = 0;
 
 rd.on('line', function(line) {
-            console.log(line);
+            // console.log(line);
 
     if (line[0]==='r') {
+        index++;
         var data = line.split(',');
-        // console.log(data);
         var card = {
-            "index" : index++,
+            "index" : index,
             "lev"   : data[2][0],
             "name-s": data[1].substr(2),
             "name"  : data[2].substr(2),
@@ -36,11 +36,18 @@ rd.on('line', function(line) {
             }
         }
         cards.push(card);
+        fs.writeFile("./data/card/"+index+".json", JSON.stringify(card), function(err) {
+            if(err) {
+                console.log(err);
+            } else {
+                // console.log("The file was saved!");
+            }
+        });
     }
 });
 
 rd.on('close', function() {
-    fs.writeFile("./data/data.json", JSON.stringify(cards), function(err) {
+    fs.writeFile("./data/cards.json", JSON.stringify(cards), function(err) {
         if(err) {
             console.log(err);
         } else {
