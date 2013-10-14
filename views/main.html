@@ -3,15 +3,19 @@
 </div>
 <div class="">
     <input type="text" ng-model="level" ng-change="changeLevel()">
+
+    <input type="checkbox" ng-model="isHideStart">
+    <span>隱藏1等屬性</span>
+
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>名稱</th>
-                <th ng-click="predicate = 'vit'; reverse=!reverse">血量</th>
-                <th ng-click="predicate = 'str'; reverse=!reverse">武力</th>
-                <th ng-click="predicate = 'mag'; reverse=!reverse">內力</th>
-                <th ng-click="predicate = 'agi'; reverse=!reverse">身法</th>
-                <th ng-click="predicate = 'def'; reverse=!reverse">防禦</th>
+                <th class="vit" ng-hide="isHideStart" ng-click="predicate = 'vit'; reverse=!reverse">血量</th>
+                <th class="str" ng-hide="isHideStart" ng-click="predicate = 'str'; reverse=!reverse">武力</th>
+                <th class="mag" ng-hide="isHideStart" ng-click="predicate = 'mag'; reverse=!reverse">內力</th>
+                <th class="agi" ng-hide="isHideStart" ng-click="predicate = 'agi'; reverse=!reverse">身法</th>
+                <th class="def" ng-hide="isHideStart" ng-click="predicate = 'def'; reverse=!reverse">防禦</th>
                 <th ng-click="predicate = 'inc.vit'; reverse=!reverse">血量成長</th>
                 <th ng-click="predicate = 'inc.str'; reverse=!reverse">武力成長</th>
                 <th ng-click="predicate = 'inc.mag'; reverse=!reverse">內力成長</th>
@@ -30,11 +34,11 @@
         <tbody>
             <tr ng-repeat="pet in pets | orderBy:predicate:reverse">
                 <td>{{ pet.name }}</td>
-                <td>{{ pet.vit }}</td>
-                <td>{{ pet.str }}</td>
-                <td>{{ pet.mag }}</td>
-                <td>{{ pet.agi }}</td>
-                <td>{{ pet.def }}</td>
+                <td class="vit" ng-hide="isHideStart">{{ pet.vit }}</td>
+                <td class="str" ng-hide="isHideStart">{{ pet.str }}</td>
+                <td class="mag" ng-hide="isHideStart">{{ pet.mag }}</td>
+                <td class="agi" ng-hide="isHideStart">{{ pet.agi }}</td>
+                <td class="def" ng-hide="isHideStart">{{ pet.def }}</td>
 
                 <td>{{ pet.inc.vit | number:1 }}</td>
                 <td>{{ pet.inc.str | number:1 }}</td>

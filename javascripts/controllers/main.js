@@ -9,6 +9,7 @@ controller('ListCtrl', function(
     $http
 ){
     $scope.level = 120.0;
+    $scope.isHideStart = true;
     // $scope.pets = $resource('/data/data.json').query();
 
     $http.get('/data/data.json').success(function(data) {
