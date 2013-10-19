@@ -34,7 +34,11 @@
         </thead>
         <tbody>
             <tr ng-repeat="pet in pets | orderBy:predicate:reverse">
-                <td>{{ pet.lev }} - {{ pet.name }}</td>
+                <td>
+                    <a href="#/card/{{pet.index}}">
+                        {{ pet.lev }} - {{ pet.name }}
+                    </a>
+                </td>
                 <td class="vit" ng-hide="isHideStart">{{ pet.vit }}</td>
                 <td class="str" ng-hide="isHideStart">{{ pet.str }}</td>
                 <td class="mag" ng-hide="isHideStart">{{ pet.mag }}</td>

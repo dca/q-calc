@@ -1,0 +1,11 @@
+# language doesn't matter, we're only using phantom.js
+language: node_js
+node_js:
+    - 0.8
+before_script:
+    - npm install -g phantomjs
+    - npm install
+script:
+    - make test
+notifications:
+    irc: "irc.freenode.org#sentry"

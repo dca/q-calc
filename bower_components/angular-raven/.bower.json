@@ -1,0 +1,19 @@
+{
+  "name": "angular-raven",
+  "version": "0.0.4",
+  "main": "angular-raven.js",
+  "dependencies": {
+    "angular": "~1.2.0-rc.2"
+  },
+  "homepage": "https://github.com/gdi2290/angular-raven",
+  "_release": "0.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.4",
+    "commit": "c7de22c80806acde3eb644c417fad2903f06a9b9"
+  },
+  "_source": "git://github.com/gdi2290/angular-raven.git",
+  "_target": "~0.0.4",
+  "_originalSource": "angular-raven",
+  "_direct": true
+}

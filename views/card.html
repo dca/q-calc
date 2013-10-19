@@ -1,6 +1,126 @@
 <div class="page-header">
     <h1>Q-calc 屬性計算機</h1>
 </div>
-<div class="">
-    {{params}}
+
+<!-- 名字 標題 -->
+<div class="row">
+    <div class="col-xs-12">
+        <h1>
+            {{ card.name }}
+        </h1>
+    </div>
 </div>
+
+<!-- 基本資料 -->
+<div class="row">
+    <div class="span3">
+        Image
+    </div>
+    <div class="span3">
+        <div>遊戲名稱：{{ card.name }}</div>
+        <div>武俠名稱：{{ card.name_s }}</div>
+        <div>弟子類型：</div>
+        <div>成長總計：{{ card.inc.vit + card.inc.str + card.inc.mag + card.inc.agi + card.inc.def }}</div>
+        <div>天賦武學：</div>
+    </div>
+    <div class="span6">
+        <div class="row">
+            <div class="span1">血量：</div>
+            <div class="span4"><progress percent="card.inc.vit*10"></progress></div>
+            <div class="span1">{{ card.inc.vit }}</div>
+        </div>
+        <div class="row">
+            <div class="span1">武力：</div>
+            <div class="span4"><progress percent="card.inc.str*10"></progress></div>
+            <div class="span1">{{ card.inc.str }}</div>
+        </div>
+        <div class="row">
+            <div class="span1">內力：</div>
+            <div class="span4"><progress percent="card.inc.mag*10"></progress></div>
+            <div class="span1">{{ card.inc.mag }}</div>
+        </div>
+        <div class="row">
+            <div class="span1">身法：</div>
+            <div class="span4"><progress percent="card.inc.agi*10"></progress></div>
+            <div class="span1">{{ card.inc.agi }}</div>
+        </div>
+        <div class="row">
+            <div class="span1">防禦：</div>
+            <div class="span4"><progress percent="card.inc.def*10"></progress></div>
+            <div class="span1">{{ card.inc.def }}</div>
+        </div>
+        <!--
+        <div>血量：{{ card.inc.vit }}</div>
+        <div>武力：{{ card.inc.str }}</div>
+        <div>內力：{{ card.inc.mag }}</div>
+        <div>身法：{{ card.inc.agi }}</div>
+        <div>防禦：{{ card.inc.def }}</div> -->
+    </div>
+</div>
+
+<!-- -->
+<hr>
+<div class="row">
+
+    <div class="span12">
+        成長計算
+        <form class="form-horizontal pull-right">
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">目標等級</label>
+                <div class="controls">
+                  <input type="text" class="input-small" ng-model="level" ng-change="changeLevel()">
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table  table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="vit" ng-hide="isHideStart" ng-click="predicate = 'vit'; reverse=!reverse">血量</th>
+                <th class="str" ng-hide="isHideStart" ng-click="predicate = 'str'; reverse=!reverse">武力</th>
+                <th class="mag" ng-hide="isHideStart" ng-click="predicate = 'mag'; reverse=!reverse">內力</th>
+                <th class="agi" ng-hide="isHideStart" ng-click="predicate = 'agi'; reverse=!reverse">身法</th>
+                <th class="def" ng-hide="isHideStart" ng-click="predicate = 'def'; reverse=!reverse">防禦</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>基本屬性</td>
+                <td class="vit" ng-hide="isHideStart">{{ card.vit }}</td>
+                <td class="str" ng-hide="isHideStart">{{ card.str }}</td>
+                <td class="mag" ng-hide="isHideStart">{{ card.mag }}</td>
+                <td class="agi" ng-hide="isHideStart">{{ card.agi }}</td>
+                <td class="def" ng-hide="isHideStart">{{ card.def }}</td>
+            </tr>
+            <tr>
+                <td>成長</td>
+                <td class="vit" ng-hide="isHideStart">{{ card.inc.vit }}</td>
+                <td class="str" ng-hide="isHideStart">{{ card.inc.str }}</td>
+                <td class="mag" ng-hide="isHideStart">{{ card.inc.mag }}</td>
+                <td class="agi" ng-hide="isHideStart">{{ card.inc.agi }}</td>
+                <td class="def" ng-hide="isHideStart">{{ card.inc.def }}</td>
+            </tr>
+            <!--
+            <tr>
+                <td>加成</td>
+                <td class="vit"><input class="input-mini" type="text">%</td>
+                <td class="str"><input class="input-mini" type="text">%</td>
+                <td class="mag"><input class="input-mini" type="text">%</td>
+                <td class="agi"><input class="input-mini" type="text">%</td>
+                <td class="def"><input class="input-mini" type="text">%</td>
+            </tr>
+            -->
+            <tr>
+                <td>最終值</td>
+                <td class="vit" ng-hide="isHideStart">{{ card.dest.vit | number : 0 }}</td>
+                <td class="str" ng-hide="isHideStart">{{ card.dest.str | number : 0 }}</td>
+                <td class="mag" ng-hide="isHideStart">{{ card.dest.mag | number : 0 }}</td>
+                <td class="agi" ng-hide="isHideStart">{{ card.dest.agi | number : 0 }}</td>
+                <td class="def" ng-hide="isHideStart">{{ card.dest.def | number : 0 }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <!-- {{ card }} -->

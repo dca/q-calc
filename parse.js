@@ -20,7 +20,7 @@ rd.on('line', function(line) {
         var card = {
             "index" : index,
             "lev"   : data[2][0],
-            "name-s": data[1].substr(2),
+            "name_s": data[1].substr(2),
             "name"  : data[2].substr(2),
             "vit"   : parseFloat(data[3]),
             "str"   : parseFloat(data[4]),

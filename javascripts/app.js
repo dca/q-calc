@@ -4,7 +4,9 @@
 
 angular.module('qCalcApp', [
     'ngRoute',
-    'ngResource'
+    'ngResource',
+    'ui.bootstrap',
+    'angular-raven'
 ]).
 
 config(function(

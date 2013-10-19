@@ -1,0 +1,25 @@
+.DS_Store
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+docs/html
+docs/doctrees
+
+node_modules
+
+sauce_connect.log
+
+scratch/
+build/
+
+BrowserStackTunnel.jar
+Sauce-Connect.jar
+
+Sauce-Connect-latest.zip
+
+*.pyc
