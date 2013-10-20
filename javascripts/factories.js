@@ -7,6 +7,33 @@ factory('Card', function(
     $http,
     $resource
 ){
+    var self = this;
+    var infs = [
+        {type: 'vit', name: '血量'},
+        {type: 'str', name: '攻擊'},
+        {type: 'mag', name: '內力'},
+        {type: 'agi', name: '身法'},
+        {type: 'def', name: '防禦'},
+    ];
+
+    var calc = function (Card, level) {
+        Card.dest = {};
+        infs.forEach(function(inf) {
+            Card.dest[inf.type] = ( Card[inf.type] + Card.inc[inf.type] * (level-1) ) +0;
+        });
+
+        Card.atk     = ( Card.dest.str + Math.max( Card.dest.mag, Card.dest.agi ) );
+        Card.surv    = ( Card.dest.vit + Card.dest.def );
+        Card.total   = ( Card.atk + Card.surv );
+        return Card;
+    }
+
+    function calcAll (pets, level) {
+        angular.forEach( pets, function(value, key){
+            calc(value, level);
+        });
+    }
+
     return {
         retrieve: function(name, args) {
             var _result = [],
@@ -27,7 +54,7 @@ factory('Card', function(
                     break;
                 case 'findCard':
                     var id = args.id || args;
-                    var Card = $resource('/data/card/:index.json', {index:'@id'});
+                    var Card = $resource('./data/card/:index.json', {index:'@id'});
                     var card = Card.get({index: id }, function(u) {
                         _result = u;
                         _deferred.resolve(_result);
@@ -51,7 +78,10 @@ factory('Card', function(
             });
 
             return _result;
-        }
+        },
+        calc : calc,
+        calcAll : calcAll,
+        infs : infs
     };
 }).
 

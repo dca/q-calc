@@ -10,8 +10,11 @@ angular.module('qCalcApp', [
 ]).
 
 config(function(
+    // $locationProvider,
     $routeProvider
 ){
+    // $locationProvider.html5Mode(true);
+
     $routeProvider.
 
     when('/', {
